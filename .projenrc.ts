@@ -9,8 +9,9 @@ const project = new cdktf.ConstructLibraryCdktf({
   projenrcTs: true,
   repositoryUrl: "https://github.com/01walid/cdktf-gke-auth.git",
   prettier: true,
-
+  releaseToNpm: true,
   jest: true,
+  minMajorVersion: 1,
   jestOptions: {
     jestConfig: {
       coverageProvider: "v8",

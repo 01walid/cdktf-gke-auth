@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "@cdktf/provider-google",
+      "version": "7.0.0",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -21,12 +26,16 @@
     },
     {
       "name": "cdktf",
-      "version": "0.13.0",
+      "version": "0.16.0",
       "type": "build"
     },
     {
       "name": "constructs",
-      "version": "10.0.12",
+      "version": "10.2.0",
+      "type": "build"
+    },
+    {
+      "name": "eslint-config-prettier",
       "type": "build"
     },
     {
@@ -39,6 +48,10 @@
     },
     {
       "name": "eslint-plugin-import",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-prettier",
       "type": "build"
     },
     {
@@ -69,12 +82,16 @@
     },
     {
       "name": "jsii",
-      "version": "~5.0.0",
+      "version": "~5.1",
       "type": "build"
     },
     {
       "name": "npm-check-updates",
       "version": "^16",
+      "type": "build"
+    },
+    {
+      "name": "prettier",
       "type": "build"
     },
     {
@@ -99,13 +116,18 @@
       "type": "build"
     },
     {
+      "name": "@cdktf/provider-google",
+      "version": "^7.0",
+      "type": "peer"
+    },
+    {
       "name": "cdktf",
-      "version": "^0.13.0",
+      "version": "^0.16",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.0.12",
+      "version": "~10.2",
       "type": "peer"
     }
   ],

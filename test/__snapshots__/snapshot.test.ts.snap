@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing synths successfully 1`] = `
+"{
+  "data": {
+    "google_client_config": {
+      "gke-auth_client-config_BA8E1446": {
+      }
+    },
+    "google_container_cluster": {
+      "gke-auth_gke-cluster_6C118177": {
+        "location": "europe-west1",
+        "name": "my-cluster",
+        "project": "my-project"
+      }
+    }
+  },
+  "output": {
+    "clusterCaCertificate": {
+      "sensitive": true,
+      "value": "\${data.google_container_cluster.gke-auth_gke-cluster_6C118177.master_auth[0].cluster_ca_certificate}"
+    },
+    "host": {
+      "value": "https://\${data.google_container_cluster.gke-auth_gke-cluster_6C118177.endpoint}"
+    },
+    "token": {
+      "sensitive": true,
+      "value": "\${data.google_client_config.gke-auth_client-config_BA8E1446.access_token}"
+    }
+  },
+  "provider": {
+    "google": [
+      {
+      }
+    ]
+  },
+  "terraform": {
+    "required_providers": {
+      "google": {
+        "source": "google",
+        "version": "4.62.0"
+      }
+    }
+  }
+}"
+`;

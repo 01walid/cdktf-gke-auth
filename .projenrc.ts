@@ -57,7 +57,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   publishToGo: {
     gitUserName: "01walid",
     gitUserEmail: "hi@walid.dev",
-    moduleName: "github.com/01walid/cdktf-gke-auth/go",
+    moduleName: "github.com/01walid/cdktf-gke-auth-go",
   },
 
   keywords: [

@@ -138,7 +138,7 @@
         "module": "cdktf_gke_auth"
       },
       "go": {
-        "moduleName": "github.com/01walid/cdktf-gke-auth/go"
+        "moduleName": "github.com/01walid/cdktf-gke-auth-go"
       }
     },
     "tsc": {

@@ -67,8 +67,16 @@
     "constructs": "~10.2"
   },
   "keywords": [
+    "auth",
     "cdk",
-    "cdktf"
+    "cdktf",
+    "constructs",
+    "gcp",
+    "gke",
+    "google",
+    "google-cloud",
+    "k8s",
+    "kubernetes"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

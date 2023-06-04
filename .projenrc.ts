@@ -1,4 +1,5 @@
 import { cdktf } from "projen";
+import { JobPermission } from "projen/lib/github/workflows-model";
 const project = new cdktf.ConstructLibraryCdktf({
   author: "Walid Ziouche",
   authorAddress: "hi@walid.dev",
@@ -11,7 +12,17 @@ const project = new cdktf.ConstructLibraryCdktf({
   prettier: true,
   releaseToNpm: true,
   jest: true,
-  minMajorVersion: 1,
+  majorVersion: 1,
+  depsUpgradeOptions: {
+    workflow: true,
+    workflowOptions: {
+      permissions: {
+        pullRequests: JobPermission.WRITE,
+        idToken: JobPermission.WRITE,
+        contents: JobPermission.READ,
+      },
+    },
+  },
   jestOptions: {
     jestConfig: {
       coverageProvider: "v8",
@@ -23,6 +34,17 @@ const project = new cdktf.ConstructLibraryCdktf({
       // transform: { "^.+\\.ts?$": ["ts-jest", {}] },
     },
   },
+  keywords: [
+    "cdktf",
+    "gke",
+    "auth",
+    "kubernetes",
+    "k8s",
+    "gcp",
+    "google",
+    "google-cloud",
+    "constructs",
+  ],
 
   // deps: ["cdktf@^0.16", "constructs@~10.2", "@cdktf/provider-google@^7.0"],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */

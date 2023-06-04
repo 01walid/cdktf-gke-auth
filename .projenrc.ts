@@ -39,6 +39,27 @@ const project = new cdktf.ConstructLibraryCdktf({
     distName: "cdktf-gke-auth",
     module: "cdktf_gke_auth",
   },
+
+  // Requires "MAVEN_GPG_PRIVATE_KEY", "MAVEN_GPG_PRIVATE_KEY_PASSPHRASE", "MAVEN_PASSWORD",
+  // "MAVEN_USERNAME", and "MAVEN_STAGING_PROFILE_ID" to be set.
+  // publishToMaven: {
+  //   javaPackage: "com.your-org.your-project-name ",
+  //   mavenGroupId: "com.your-org",
+  //   mavenArtifactId: "your-project-name",
+  // },
+
+  // Requires "NUGET_API_KEY" to be set.
+  // publishToNuget: {
+  //   dotNetNamespace: "01walid.CDKTFGKEAuth",
+  //   packageId: "01walid.CDKTFGKEAuth",
+  // },
+
+  publishToGo: {
+    gitUserName: "01walid",
+    gitUserEmail: "hi@walid.dev",
+    moduleName: "github.com/01walid/cdktf-gke-auth/go",
+  },
+
   keywords: [
     "cdktf",
     "gke",

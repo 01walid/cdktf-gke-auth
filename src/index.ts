@@ -3,7 +3,7 @@ import { DataGoogleContainerCluster } from "@cdktf/provider-google/lib/data-goog
 import { Fn, ITerraformDependable } from "cdktf";
 import { Construct } from "constructs";
 
-export interface GkeControlPlaneProps {
+export interface ClusterInfo {
   readonly clusterName: string;
   readonly location: string;
   readonly projectId: string;
@@ -19,7 +19,7 @@ export class GKEAuth extends Construct implements ITerraformDependable {
   readonly clusterInfo: DataGoogleContainerCluster;
   readonly clientConfig: DataGoogleClientConfig;
 
-  constructor(scope: Construct, id: string, props: GkeControlPlaneProps) {
+  constructor(scope: Construct, id: string, props: ClusterInfo) {
     super(scope, id);
 
     this.clusterInfo = new DataGoogleContainerCluster(this, "gke-cluster", {

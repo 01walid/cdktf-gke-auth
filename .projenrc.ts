@@ -34,6 +34,10 @@ const project = new cdktf.ConstructLibraryCdktf({
       // transform: { "^.+\\.ts?$": ["ts-jest", {}] },
     },
   },
+  publishToPypi: {
+    distName: "cdktf-gke-auth",
+    module: "cdktf_gke_auth",
+  },
   keywords: [
     "cdktf",
     "gke",

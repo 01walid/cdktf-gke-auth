@@ -1,6 +1,8 @@
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg" alt="Apache 2.0 License"></a>
+  <a href="https://gitpod.io/#https://github.com/01walid/cdktf-gke-auth"><img src="https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod" alt="Gitpod ready-to-code"></a>
   <a href="https://www.npmjs.com/package/cdktf-gke-auth"><img src="https://badge.fury.io/js/cdktf-gke-auth.svg" alt="npm version"></a>
+  <a href="https://pypi.org/project/cdktf-gke-auth/"><img src="https://badge.fury.io/py/cdktf-gke-auth.svg" alt="PyPI version"></a>
   <a href="https://github.com/01walid/cdktf-gke-auth/actions/workflows/build.yml"><img src="https://github.com/01walid/cdktf-gke-auth/actions/workflows/build.yml/badge.svg" alt="Build badge"></a>
   <a href="https://github.com/01walid/cdktf-gke-auth/actions/workflows/release.yml"><img src="https://github.com/01walid/cdktf-gke-auth/actions/workflows/release.yml/badge.svg" alt="Release badge"></a>
 </p>
@@ -9,6 +11,8 @@
 
 Easily authenticate against a Google Kubernetes Engine (GKE) within your CDK for Terraform stack. Without the need to
 resort to [Google's terraform GKE auth](https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/tree/v26.1.1/modules/auth) module. You can avoid running `cdktf get` as pre-synth step.
+
+This project uses [projen](https://github.com/projen/projen) and [jsii](https://github.com/aws/jsii) to compile the construct to Typescript, Python, Go and .Net (Java upon request).
 
 ## Example usage (Typescript)
 
@@ -33,20 +37,22 @@ export class MyKubeStack extends TerraformStack {
     });
 
     // init the Kubernetes provider like so:
-    // new KubernetesProvider(this, "kubernetes", {
-    //   ...auth.authCredentials
-    // });
+    new KubernetesProvider(this, "kubernetes", {
+      ...auth.authCredentials
+    });
 
     // Or a helm provider like so:
-    //  new HelmProvider(this, "helm", {
-    //   kubernetes: auth.authCredentials,
-    // });
+     new HelmProvider(this, "helm", {
+      kubernetes: auth.authCredentials,
+    });
   }
 }
 ```
 
 The `GKEAuth` instance expose `host`, `clusterCaCertificate`, `clusterCaCertificatePEM`, and `token` you can use to authenticate using
 any of the kubernetes popular cdktf providers.
+
+For other languages examples, checkout this construct on [ConstructHub](https://constructs.dev/packages/cdktf-gke-auth/).
 
 # API Reference <a name="API Reference" id="api-reference"></a>
 
@@ -61,14 +67,14 @@ any of the kubernetes popular cdktf providers.
 ```typescript
 import { GKEAuth } from 'cdktf-gke-auth'
 
-new GKEAuth(scope: Construct, id: string, props: GkeControlPlaneProps)
+new GKEAuth(scope: Construct, id: string, props: ClusterInfo)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdktf-gke-auth.GKEAuth.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#cdktf-gke-auth.GKEAuth.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdktf-gke-auth.GKEAuth.Initializer.parameter.props">props</a></code> | <code><a href="#cdktf-gke-auth.GkeControlPlaneProps">GkeControlPlaneProps</a></code> | *No description.* |
+| <code><a href="#cdktf-gke-auth.GKEAuth.Initializer.parameter.props">props</a></code> | <code><a href="#cdktf-gke-auth.ClusterInfo">ClusterInfo</a></code> | *No description.* |
 
 ---
 
@@ -86,7 +92,7 @@ new GKEAuth(scope: Construct, id: string, props: GkeControlPlaneProps)
 
 ##### `props`<sup>Required</sup> <a name="props" id="cdktf-gke-auth.GKEAuth.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#cdktf-gke-auth.GkeControlPlaneProps">GkeControlPlaneProps</a>
+- *Type:* <a href="#cdktf-gke-auth.ClusterInfo">ClusterInfo</a>
 
 ---
 
@@ -329,27 +335,27 @@ public readonly token: string;
 
 ---
 
-### GkeControlPlaneProps <a name="GkeControlPlaneProps" id="cdktf-gke-auth.GkeControlPlaneProps"></a>
+### ClusterInfo <a name="ClusterInfo" id="cdktf-gke-auth.ClusterInfo"></a>
 
-#### Initializer <a name="Initializer" id="cdktf-gke-auth.GkeControlPlaneProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="cdktf-gke-auth.ClusterInfo.Initializer"></a>
 
 ```typescript
-import { GkeControlPlaneProps } from 'cdktf-gke-auth'
+import { ClusterInfo } from 'cdktf-gke-auth'
 
-const gkeControlPlaneProps: GkeControlPlaneProps = { ... }
+const clusterInfo: ClusterInfo = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdktf-gke-auth.GkeControlPlaneProps.property.clusterName">clusterName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdktf-gke-auth.GkeControlPlaneProps.property.location">location</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdktf-gke-auth.GkeControlPlaneProps.property.projectId">projectId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-gke-auth.ClusterInfo.property.clusterName">clusterName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-gke-auth.ClusterInfo.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdktf-gke-auth.ClusterInfo.property.projectId">projectId</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `clusterName`<sup>Required</sup> <a name="clusterName" id="cdktf-gke-auth.GkeControlPlaneProps.property.clusterName"></a>
+##### `clusterName`<sup>Required</sup> <a name="clusterName" id="cdktf-gke-auth.ClusterInfo.property.clusterName"></a>
 
 ```typescript
 public readonly clusterName: string;
@@ -359,7 +365,7 @@ public readonly clusterName: string;
 
 ---
 
-##### `location`<sup>Required</sup> <a name="location" id="cdktf-gke-auth.GkeControlPlaneProps.property.location"></a>
+##### `location`<sup>Required</sup> <a name="location" id="cdktf-gke-auth.ClusterInfo.property.location"></a>
 
 ```typescript
 public readonly location: string;
@@ -369,7 +375,7 @@ public readonly location: string;
 
 ---
 
-##### `projectId`<sup>Required</sup> <a name="projectId" id="cdktf-gke-auth.GkeControlPlaneProps.property.projectId"></a>
+##### `projectId`<sup>Required</sup> <a name="projectId" id="cdktf-gke-auth.ClusterInfo.property.projectId"></a>
 
 ```typescript
 public readonly projectId: string;

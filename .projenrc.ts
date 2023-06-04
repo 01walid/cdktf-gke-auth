@@ -13,6 +13,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   releaseToNpm: true,
   jest: true,
   majorVersion: 1,
+  gitpod: true,
   depsUpgradeOptions: {
     workflow: true,
     workflowOptions: {
@@ -61,5 +62,11 @@ project.addPeerDeps(
   "constructs@~10.2",
   "@cdktf/provider-google@^7.0"
 );
+
+project.gitpod?.addCustomTask({
+  name: "Setup",
+  init: "yarn install",
+  command: "npx projen build",
+});
 
 project.synth();
